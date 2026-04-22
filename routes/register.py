@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from flask_jwt_extended import create_access_token
 from repositories.user_repo import UserRepo
 from database.database import SessionLocal
 
@@ -21,7 +21,7 @@ def register():
 
     try:
         user = repo.register_user(email=email, password=password, nickname=nickname)
-        accessToken = create_access_token(identity=user["id"])
-        return { "user": user, "accessToken": accessToken }
+        accessToken = create_access_token(identity=user.id)
+        return { "user": user.serialize(), "accessToken": accessToken }
     except Exception as e:
         return { "message": f"{str(e)}", "error": "lowkey internal server error 500" }

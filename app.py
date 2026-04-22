@@ -3,6 +3,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_cors import CORS
 from routes.register import register_bp
 from routes.root import root_bp
+from routes.login import login_bp
 from database.database import Base, engine
 
 # START Db
@@ -18,3 +19,4 @@ jwt = JWTManager(app)
 # routes
 app.register_blueprint(root_bp, url_prefix="/")
 app.register_blueprint(register_bp, url_prefix="/api")
+app.register_blueprint(login_bp, url_prefix="/api")

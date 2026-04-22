@@ -16,11 +16,17 @@ import requests
 #     print(repo.get_by_email("xongs@gmail.com"))  
 
 if __name__ == "__main__":
+    # resp = requests.request(method="POST",
+    #                         url="http://127.0.0.1:8000/api/register", 
+    #                         json={
+    #                             "email": "xongsm",
+    #                             "nickname": "xongs",
+    #                             "password": "asidm34e$#"
+    #                         })
     resp = requests.request(method="POST",
-                            url="http://127.0.0.1:8000/api/register", 
+                            url="http://127.0.0.1:8000/api/login", 
                             json={
                                 "email": "xongsm",
-                                "nickname": "xongs",
-                                "password": "asidm34e$#"
+                                "password": "asidm34e$#a"
                             })
     print(resp.text)
