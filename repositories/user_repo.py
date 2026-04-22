@@ -37,7 +37,9 @@ class UserRepo:
             raise UserNotFoundError(f"User with email '{email}' not found.")
         return user.serialize()
     
-    def register_user(self, email: EmailStr, password: str, nickname: str) -> UserSchema:
+    def register_user(self, email: EmailStr, password: str, nickname: str) -> dict:
+        """Returns user.serialize() or raise error"""
+
         if self._get_user_by(email=email):
             raise UserAlreadyExistsError(f"User with email '{email}' already exists.")
 
